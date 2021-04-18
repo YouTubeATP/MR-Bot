@@ -183,6 +183,12 @@ async def help(ctx):
 `m!data {車站代號 Station Code} {eng|chi}`
 取得一個 MR 車站的資訊。 Obtain data of an MR station.
 
+`m!usernamereg [Minecraft 使用者名稱 Username]`
+註冊您的 Minecraft 使用者名稱。 Register your Minecraft username.
+
+`m!username [Discord 使用者 User]`
+查詢一個 Discord 用戶的 Minecraft 使用者名稱。 Query a Minecraft username of a Discord user.
+
 [] 必填 Required
 {} 選填 Optional""")
 
@@ -192,6 +198,39 @@ async def send(ctx, *, content):
         await ctx.send("抱歉。您沒有足夠權限執行此操作。 Sorry, but you do not have permission to do that.")
         return
     await ctx.send(content)
+    
+### SLASH COMMANDS ZONE ###
+
+from discord_slash import SlashCommand
+slash = SlashCommand(bot, sync_commands=True, override_type=True)
+
+guildID = 832673545090891808
+
+@slash.slash(name="ping", 
+             description="獲得機器人的延遲 Returns the latency in ms",
+             guild_ids=[guildID])
+async def _ping(ctx):
+    await ctx.send(f':ping_pong: **{round(bot.latency * 1000)}ms**')
+    
+@slash.slash(name="help",
+             description="獲得機器人的使用指南 Returns the user guide of this bot",
+             guild_ids=[guildID])
+async def help(ctx):
+    await ctx.send("""***MR Bot 使用指南 User Guide***
+`/ping`
+獲得機器人的延遲。 Returns the latency in ms.
+
+`/help`
+此指令。 This command.
+
+`/usernamereg [Minecraft 使用者名稱 Username]`
+註冊您的 Minecraft 使用者名稱。 Register your Minecraft username.
+
+`/username [Discord 使用者 User]`
+查詢一個 Discord 用戶的 Minecraft 使用者名稱。 Query a Minecraft username of a Discord user.
+
+[] 必填 Required
+{} 選填 Optional""")
 
 def runBot():    
     for i in os.listdir('./cogs'):
