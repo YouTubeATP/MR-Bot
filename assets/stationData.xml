@@ -1,0 +1,200 @@
+<stations>
+    <station code="LAR">
+        <cname>湖河</cname>
+        <ename>Lake River</ename>
+        <line>MSL</line>
+        <exit>2</exit>
+    </station>
+    <station code="MUJ">
+        <cname>菇林</cname>
+        <ename>Mushroom Jungle</ename>
+        <line>MSL</line>
+        <exit>2</exit>
+    </station>
+    <station code="SPP">
+        <cname>重生點</cname>
+        <ename>Spawnpoint</ename>
+        <line>MSL NEL</line>
+        <exit>1</exit>
+    </station>
+    <station code="PIY">
+        <cname>平原</cname>
+        <ename>PINGYUEN</ename>
+        <line>MSL CIL</line>
+        <exit>1</exit>
+    </station>
+    <station code="PYC">
+        <cname>平原中</cname>
+        <ename>PINGYUEN Centre</ename>
+        <line>MSL</line>
+        <exit>2</exit>
+    </station>
+    <station code="VIL">
+        <cname>村莊</cname>
+        <ename>Village</ename>
+        <line>MSL CAL</line>
+        <exit>2</exit>
+    </station>
+    <station code="SWP">
+        <cname>沼澤</cname>
+        <ename>Swamp</ename>
+        <line>MSL</line>
+        <exit>2</exit>
+    </station>
+    <station code="HIH">
+        <cname>高山</cname>
+        <ename>High Hill</ename>
+        <line>MSL</line>
+        <exit>2</exit>
+    </station>
+    <station code="CAN">
+        <cname>峽谷</cname>
+        <ename>Canyon</ename>
+        <line>MSL NEL EWL</line>
+        <exit>2</exit>
+    </station>
+    <station code="AIR">
+        <cname>機場</cname>
+        <ename>Airport</ename>
+        <line>MSL</line>
+        <exit>3</exit>
+    </station>
+    <station code="SEC">
+        <cname>雲海</cname>
+        <ename>Sea Clouds</ename>
+        <line>MSL NEL</line>
+        <exit>1</exit>
+    </station>
+    <station code="TGC">
+        <cname>大山崖</cname>
+        <ename>The Grand Cliff</ename>
+        <line>MSL</line>
+        <exit>2</exit>
+    </station>
+    <station code="NAC">
+        <cname>泥涌</cname>
+        <ename>Nai Chung</ename>
+        <line>MSL NEL CIL</line>
+        <exit>1</exit>
+    </station>
+    <station code="ROH">
+        <cname>捲山</cname>
+        <ename>Rollhill</ename>
+        <line>MSL EBL</line>
+        <exit>2</exit>
+    </station>
+    <station code="ICE">
+        <cname>冰火</cname>
+        <ename>Icefire</ename>
+        <line>MSL</line>
+        <exit>2</exit>
+    </station>
+    <station code="COM">
+        <cname>指令中心</cname>
+        <ename>Command Centre</ename>
+        <line>NEL</line>
+        <exit>1</exit>
+    </station>
+    <station code="HIL">
+        <cname>高原</cname>
+        <ename>Highlands</ename>
+        <line>NEL</line>
+        <exit>2</exit>
+    </station>
+    <station code="MLC">
+        <cname>馬六甲海</cname>
+        <ename>Malacca Sea</ename>
+        <line>NEL IIL</line>
+        <exit>2</exit>
+    </station>
+    <station code="FAF">
+        <cname>揮帆</cname>
+        <ename>Fai Fai</ename>
+        <line>NEL</line>
+        <exit>2</exit>
+    </station>
+    <station code="HFT">
+        <cname>何福堂</cname>
+        <ename>Hoh Fuk Tong</ename>
+        <line>NEL</line>
+        <exit>2</exit>
+    </station>
+    <station code="MIL">
+        <cname>米憐</cname>
+        <ename>Milne</ename>
+        <line>NEL</line>
+        <exit>1</exit>
+    </station>
+    <station code="MOR">
+        <cname>瑪禮遜</cname>
+        <ename>Morrison</ename>
+        <line>NEL</line>
+        <exit>2</exit>
+    </station>
+    <station code="NOB">
+        <cname>紐寶璐</cname>
+        <ename>Noble</ename>
+        <line>NEL</line>
+        <exit>2</exit>
+    </station>
+    <station code="LEF">
+        <cname>梁發</cname>
+        <ename>Leung Faat</ename>
+        <line>NEL</line>
+        <exit>1</exit>
+    </station>
+    <station code="BAM">
+        <cname>黑山</cname>
+        <ename>Black Mountain</ename>
+        <line>EWL</line>
+        <exit>1</exit>
+    </station>
+    <station code="PUJ">
+        <cname>紫密林</cname>
+        <ename>Purple Jungle</ename>
+        <line>EWL</line>
+        <exit>1</exit>
+    </station>
+    <station code="EAJ">
+        <cname>東樹林</cname>
+        <ename>East Jungle</ename>
+        <line>EWL</line>
+        <exit>1</exit>
+    </station>
+    <station code="LIL">
+        <cname>荷葉湖</cname>
+        <ename>Lily Lake</ename>
+        <line>EWL</line>
+        <exit>1</exit>
+    </station>
+    <station code="GRC">
+        <cname>大峽谷</cname>
+        <ename>Grand Canyon</ename>
+        <line>EWL</line>
+        <exit>2</exit>
+    </station>
+    <station code="MUS">
+        <cname>音樂沼</cname>
+        <ename>Music Swamp</ename>
+        <line>CIL</line>
+        <exit>1</exit>
+    </station>
+    <station code="DIP">
+        <cname>恐龍港</cname>
+        <ename>Dino Port</ename>
+        <line>CIL</line>
+        <exit>2</exit>
+    </station>
+    <station code="CAV">
+        <cname>洞穴</cname>
+        <ename>Cave</ename>
+        <line>CAL</line>
+        <exit>2</exit>
+    </station>
+    <station code="DUN">
+        <cname>地牢</cname>
+        <ename>Dungeon</ename>
+        <line>CAL</line>
+        <exit>1</exit>
+    </station>
+</stations>
