@@ -9,7 +9,7 @@ class Data(commands.Cog):
     @commands.command()
     async def data(self, ctx, stationCode=None, lang=None):
         with open("assets/stationData.xml", "r", encoding="utf8") as f:
-            bsData = BeautifulSoup(f.read(), "xml") 
+            bsData = BeautifulSoup(f.read(), "lxml") 
         if not stationCode:
             res = "請輸入一個車站代號。\nPlease input a station code.\n\n"
             for station in bsData.find_all("station"):
