@@ -21,10 +21,7 @@ class Minecraft(commands.Cog):
             usernames = json.loads(client.get_object(Bucket="mr-bot", Key="usernames.json")["Body"].read())
             ## Checking which entries exist
             if f"{str(ctx.author.id)}" in usernames:
-                if version in usernames[str(ctx.author.id)]:
-                    usernames[str(ctx.author.id)] = username
-                else:
-                    usernames.update({f"{str(ctx.author.id)}": f"{username}"})
+                usernames[str(ctx.author.id)] = username
             else:
                 usernames.update({f"{str(ctx.author.id)}": f"{username}"})
             with open("usernames.json", "w") as f:
@@ -64,10 +61,7 @@ class Minecraft(commands.Cog):
             usernames = json.loads(client.get_object(Bucket="mr-bot", Key="usernames.json")["Body"].read())
             ## Checking which entries exist
             if f"{str(ctx.author.id)}" in usernames:
-                if version in usernames[str(ctx.author.id)]:
-                    usernames[str(ctx.author.id)] = username
-                else:
-                    usernames.update({f"{str(ctx.author.id)}": f"{username}"})
+                usernames[str(ctx.author.id)] = username
             else:
                 usernames.update({f"{str(ctx.author.id)}": f"{username}"})
             with open("usernames.json", "w") as f:
