@@ -3,10 +3,11 @@ import os
 import sys
 import io
 import traceback
-import yaml
 from decouple import config
 from discord.ext import commands
+from discord.utils import get
 import difflib
+from disputils import BotEmbedPaginator
 
 global prefix
 prefix = 'm!'
@@ -30,6 +31,24 @@ async def on_ready():
     for command in bot.commands:
         aliases += (list(command.aliases) + [command.name])
     
+@bot.event
+async def on_member_join(member, guild):
+    if guild.id != 832673545090891808:
+        return
+    emojis = bot.get_guild(848231259440414750).emojis
+    embed = discord.Embed(title=f"{get(emojis, name='join')} Member Joined", description=f"歡迎 <@{member.id}> 來到伺服器！\nWelcome <@{member.id}> to the server!", color=0x36393f)
+    channel = bot.get_channel(832673546139729979)
+    await channel.send(embed=embed)
+    
+@bot.event
+async def on_member_remove(member, guild):
+    if guild.id != 832673545090891808:
+        return
+    emojis = bot.get_guild(848231259440414750).emojis
+    embed = discord.Embed(title=f"{get(emojis, name='leave')} Member Left", description=f"<@{member.id}> 離開了伺服器！下次再見\n<@{member.id}> has left the server! See you next time!", color=0x36393f)
+    channel = bot.get_channel(832673546139729979)
+    await channel.send(embed=embed)
+
 ## Message edit detection
 @bot.event
 async def on_message_edit(before, after):
@@ -44,11 +63,14 @@ async def on_command_error(ctx, error):
         triedCommand = ctx.message.content.split(" ")[a]
         a += 1
     if isinstance(error, discord.ext.commands.errors.CommandNotFound):
+        emojis = bot.get_guild(848231259440414750).emojis
         try:
             closest = difflib.get_close_matches(triedCommand, aliases)[0]
-            await ctx.channel.send(f"無效指令！您是指 `m!{closest}` 嗎？ Invalid command! Did you mean `m!{closest}`?")
+            embed = discord.Embed(title=f"{get(emojis, name='error')} 無效指令 Invalid Command", description=f"無效指令！您是指 `m!{closest}` 嗎？\nInvalid command! Did you mean `m!{closest}`?", color=0x36393f)
+            await ctx.channel.send(embed=embed)
         except IndexError:
-            await ctx.channel.send("無效指令！ Invalid command!")
+            embed = discord.Embed(title=f"{get(emojis, name='error')} 無效指令 Invalid Command", description=f"無效指令！\nInvalid command!", color=0x36393f)
+            await ctx.channel.send(embed=embed)
 
 @bot.command()
 async def extload(ctx, cog):
@@ -56,7 +78,9 @@ async def extload(ctx, cog):
         bot.load_extension(f'cogs.{cog}')
         await ctx.send(f'Loaded extension `{cog}`!')
     else:
-        await ctx.send("抱歉。您沒有足夠權限執行此操作。 Sorry, but you don't have permission to do that.")
+        emojis = bot.get_guild(848231259440414750).emojis
+        embed = discord.Embed(title=f"{get(emojis, name='error')} 無權限 No Permission", description="抱歉。您沒有足夠權限執行此操作。\nSorry, but you don't have permission to do that.", color=0x36393f)
+        await ctx.send(embed=embed)
 
 @bot.command()
 async def extunload(ctx, cog):
@@ -64,7 +88,9 @@ async def extunload(ctx, cog):
         bot.unload_extension(f'cogs.{cog}')
         await ctx.send(f'Unloaded extension `{cog}`!')
     else:
-        await ctx.send("抱歉。您沒有足夠權限執行此操作。 Sorry, but you don't have permission to do that.")
+        emojis = bot.get_guild(848231259440414750).emojis
+        embed = discord.Embed(title=f"{get(emojis, name='error')} 無權限 No Permission", description="抱歉。您沒有足夠權限執行此操作。\nSorry, but you don't have permission to do that.", color=0x36393f)
+        await ctx.send(embed=embed)
 
 @bot.command()
 async def extreload(ctx, cog):
@@ -73,7 +99,9 @@ async def extreload(ctx, cog):
         bot.load_extension(f'cogs.{cog}')
         await ctx.send(f'Reloaded extension `{cog}`!')
     else:
-        await ctx.send("抱歉。您沒有足夠權限執行此操作。 Sorry, but you don't have permission to do that.")
+        emojis = bot.get_guild(848231259440414750).emojis
+        embed = discord.Embed(title=f"{get(emojis, name='error')} 無權限 No Permission", description="抱歉。您沒有足夠權限執行此操作。\nSorry, but you don't have permission to do that.", color=0x36393f)
+        await ctx.send(embed=embed)
 
 @bot.command()
 async def extlist(ctx):
@@ -87,7 +115,9 @@ async def extlist(ctx):
             message1 += f'''`{j}`\n'''
         await ctx.send(message1)
     else:
-        await ctx.send("抱歉。您沒有足夠權限執行此操作。 Sorry, but you don't have permission to do that.")
+        emojis = bot.get_guild(848231259440414750).emojis
+        embed = discord.Embed(title=f"{get(emojis, name='error')} 無權限 No Permission", description="抱歉。您沒有足夠權限執行此操作。\nSorry, but you don't have permission to do that.", color=0x36393f)
+        await ctx.send(embed=embed)
     
 @bot.command(name='exec')
 async def exec_command(ctx, *, arg1):
@@ -114,7 +144,9 @@ async def exec_command(ctx, *, arg1):
             embed.add_field(name="Output", value=f'```\n{str(output)}\n```', inline=False)
             await ctx.send(embed=embed)
     else:
-        await ctx.send("抱歉。您沒有足夠權限執行此操作。 Sorry, but you don't have permission to do that.")
+        emojis = bot.get_guild(848231259440414750).emojis
+        embed = discord.Embed(title=f"{get(emojis, name='error')} 無權限 No Permission", description="抱歉。您沒有足夠權限執行此操作。\nSorry, but you don't have permission to do that.", color=0x36393f)
+        await ctx.send(embed=embed)
 
 @bot.command(name='asyncDef')
 async def asyncDef_command(ctx, *, arg1):
@@ -139,7 +171,9 @@ async def asyncDef_command(ctx, *, arg1):
             embed.add_field(name="Function Definition", value=f'```py\n{str(func)}\n```', inline=False)
             await ctx.send(embed=embed)
     else:
-        await ctx.send("抱歉。您沒有足夠權限執行此操作。 Sorry, but you don't have permission to do that.")
+        emojis = bot.get_guild(848231259440414750).emojis
+        embed = discord.Embed(title=f"{get(emojis, name='error')} 無權限 No Permission", description="抱歉。您沒有足夠權限執行此操作。\nSorry, but you don't have permission to do that.", color=0x36393f)
+        await ctx.send(embed=embed)
 
 @bot.command(name='asyncExec')
 async def asyncExec_command(ctx):
@@ -165,37 +199,51 @@ async def asyncExec_command(ctx):
             embed.add_field(name="Output", value=f'```\n{str(output)}\n```', inline=False)
             await ctx.send(embed=embed)
     else:
-        await ctx.send("抱歉。您沒有足夠權限執行此操作。 Sorry, but you don't have permission to do that.")
+        emojis = bot.get_guild(848231259440414750).emojis
+        embed = discord.Embed(title=f"{get(emojis, name='error')} 無權限 No Permission", description="抱歉。您沒有足夠權限執行此操作。\nSorry, but you don't have permission to do that.", color=0x36393f)
+        await ctx.send(embed=embed)
 
 @bot.command()
 async def ping(ctx):
-    await ctx.send(f':ping_pong: **{round(bot.latency * 1000)}ms**')
+    emojis = bot.get_guild(832673546139729979).emojis
+    embed = discord.Embed(title=f"{get(emojis, name='ping')} 延遲 Ping", description=f"**{round(bot.latency * 1000)}ms**", color=0x36393f)
+    await ctx.send(embed=embed)
 
 @bot.command()
 async def help(ctx):
-    await ctx.send("""***MR Bot 使用指南 User Guide***
-`m!ping`
-獲得機器人的延遲。 Returns the latency in ms.
-
-`m!help`
-此指令。 This command.
-
-`m!data {車站代號 Station Code} {eng|chi}`
-取得一個 MR 車站的資訊。 Obtain data of an MR station.
-
-`m!usernamereg [Minecraft 使用者名稱 Username]`
-註冊您的 Minecraft 使用者名稱。 Register your Minecraft username.
-
-`m!username [Discord 使用者 User]`
-查詢一個 Discord 用戶的 Minecraft 使用者名稱。 Query a Minecraft username of a Discord user.
-
-[] 必填 Required
-{} 選填 Optional""")
+    emojis = bot.get_guild(832673546139729979).emojis
+    embed = discord.Embed(title=f"{get(emojis, name='error')} 無權限 No Permission", description="抱歉。您沒有足夠權限執行此操作。\nSorry, but you don't have permission to do that.", color=0x36393f)
+    await ctx.send(embed=embed)
+    embed1=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="help")} `m!help`
+{get(emojis, name='space')} 此指令。
+{get(emojis, name='space')} This command.""", color=0x36393f)
+    embed2=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="ping")} `m!ping`
+{get(emojis, name='space')} 獲得機器人的延遲。 
+{get(emojis, name='space')} Returns the latency in ms.""", color=0x36393f)
+    embed3=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="usernamereg")} `m!usernamereg [java|bedrock] [username]`
+{get(emojis, name='space')} 註冊您的 Minecraft 使用者名稱。
+{get(emojis, name='space')} Register your Minecraft username.""", color=0x36393f)
+    embed4=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="usernamequery")} `m!username [java|bedrock] [mentionuser]`
+{get(emojis, name='space')} 查詢一個 Discord 用戶的 Minecraft 使用者名稱。 
+{get(emojis, name='space')} Query a Minecraft username of a Discord user.""", color=0x36393f)
+    embed5=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="data")} m!data {{車站代號 Station Code}} {{eng|chi}}
+{get(emojis, name='space')} 取得一個 MR 車站的資訊。 
+{get(emojis, name='space')} Obtain data of an MR station.""", color=0x36393f)
+    embed1.set_footer(text="[] 必填 Required {} 選填 Optional")
+    embed2.set_footer(text="[] 必填 Required {} 選填 Optional")
+    embed3.set_footer(text="[] 必填 Required {} 選填 Optional")
+    embed4.set_footer(text="[] 必填 Required {} 選填 Optional")
+    embed5.set_footer(text="[] 必填 Required {} 選填 Optional")
+    embeds = [embed1, embed2, embed3, embed4, embed5]
+    paginator = BotEmbedPaginator(ctx, embeds)
+    await paginator.run()
 
 @bot.command()
 async def send(ctx, *, content):
     if ctx.author.id != 438298127225847810:
-        await ctx.send("抱歉。您沒有足夠權限執行此操作。 Sorry, but you do not have permission to do that.")
+        emojis = bot.get_guild(848231259440414750).emojis
+        embed = discord.Embed(title=f"{get(emojis, name='error')} 無權限 No Permission", description="抱歉。您沒有足夠權限執行此操作。\nSorry, but you don't have permission to do that.", color=0x36393f)
+        await ctx.send(embed=embed)
         return
     await ctx.send(content)
     
@@ -210,7 +258,9 @@ guildID = 832673545090891808
              description="獲得機器人的延遲 Returns the latency in ms",
              guild_ids=[guildID])
 async def _ping(ctx):
-    await ctx.send(f':ping_pong: **{round(bot.latency * 1000)}ms**')
+    emojis = bot.get_guild(832673546139729979).emojis
+    embed = discord.Embed(title=f"{get(emojis, name='ping')} 延遲 Ping", description=f"**{round(bot.latency * 1000)}ms**", color=0x36393f)
+    await ctx.send(embed=embed)
     
 @slash.slash(name="help",
              description="獲得機器人的使用指南 Returns the user guide of this bot",

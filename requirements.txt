@@ -2,7 +2,7 @@ discord.py==1.6.0
 beautifulsoup4==4.9.3
 discord==1.0.1
 python-decouple==3.4
-PyYAML==5.4.1
 lxml==4.6.3
 boto3==1.15.18
 discord-py-slash-command==1.1.0
+disputils==0.1.3
