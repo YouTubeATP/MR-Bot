@@ -36,7 +36,7 @@ async def on_member_join(member):
     if member.guild.id != 832673545090891808:
         return
     emojis = bot.get_guild(848231259440414750).emojis
-    embed = discord.Embed(title=f"{get(emojis, name='join')} Member Joined", description=f"歡迎 <@{member.id}> 來到伺服器！\nWelcome <@{member.id}> to the server!", color=0x36393f)
+    embed = discord.Embed(title=f"{get(emojis, name='join')} 成員加入 Member Joined", description=f"歡迎 <@{member.id}> 來到伺服器！\nWelcome <@{member.id}> to the server!", color=0x36393f)
     channel = bot.get_channel(832673546139729979)
     await channel.send(embed=embed)
     
@@ -45,7 +45,7 @@ async def on_member_remove(member):
     if member.guild.id != 832673545090891808:
         return
     emojis = bot.get_guild(848231259440414750).emojis
-    embed = discord.Embed(title=f"{get(emojis, name='leave')} Member Left", description=f"<@{member.id}> 離開了伺服器！下次再見\n<@{member.id}> has left the server! See you next time!", color=0x36393f)
+    embed = discord.Embed(title=f"{get(emojis, name='leave')} 成員離開 Member Left", description=f"<@{member.id}> 離開了伺服器！下次再見\n<@{member.id}> has left the server! See you next time!", color=0x36393f)
     channel = bot.get_channel(832673546139729979)
     await channel.send(embed=embed)
 
