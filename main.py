@@ -218,10 +218,10 @@ async def help(ctx):
     embed2=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="ping")} `m!ping`
 {get(emojis, name='space')} 獲得機器人的延遲。 
 {get(emojis, name='space')} Returns the latency in ms.""", color=0x36393f)
-    embed3=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="usernamereg")} `m!usernamereg [java|bedrock] [username]`
+    embed3=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="usernamereg")} `m!usernamereg [username]`
 {get(emojis, name='space')} 註冊您的 Minecraft 使用者名稱。
 {get(emojis, name='space')} Register your Minecraft username.""", color=0x36393f)
-    embed4=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="username")} `m!username [java|bedrock] [mentionuser]`
+    embed4=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="username")} `m!username [mentionuser]`
 {get(emojis, name='space')} 查詢一個 Discord 用戶的 Minecraft 使用者名稱。 
 {get(emojis, name='space')} Query a Minecraft username of a Discord user.""", color=0x36393f)
     embed5=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="data")} m!data {{車站代號 Station Code}} {{eng|chi}}
@@ -271,10 +271,10 @@ async def help(ctx):
     embed2=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="ping")} `/ping`
 {get(emojis, name='space')} 獲得機器人的延遲。 
 {get(emojis, name='space')} Returns the latency in ms.""", color=0x36393f)
-    embed3=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="usernamereg")} `/usernamereg [java|bedrock] [username]`
+    embed3=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="usernamereg")} `/usernamereg [username]`
 {get(emojis, name='space')} 註冊您的 Minecraft 使用者名稱。
 {get(emojis, name='space')} Register your Minecraft username.""", color=0x36393f)
-    embed4=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="username")} `/username [java|bedrock] [mentionuser]`
+    embed4=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="username")} `/username [mentionuser]`
 {get(emojis, name='space')} 查詢一個 Discord 用戶的 Minecraft 使用者名稱。 
 {get(emojis, name='space')} Query a Minecraft username of a Discord user.""", color=0x36393f)
     embed1.set_footer(text="[] 必填 Required {} 選填 Optional")
