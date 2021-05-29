@@ -205,15 +205,13 @@ async def asyncExec_command(ctx):
 
 @bot.command()
 async def ping(ctx):
-    emojis = bot.get_guild(832673546139729979).emojis
+    emojis = bot.get_guild(848231259440414750).emojis
     embed = discord.Embed(title=f"{get(emojis, name='ping')} 延遲 Ping", description=f"**{round(bot.latency * 1000)}ms**", color=0x36393f)
     await ctx.send(embed=embed)
 
 @bot.command()
 async def help(ctx):
-    emojis = bot.get_guild(832673546139729979).emojis
-    embed = discord.Embed(title=f"{get(emojis, name='error')} 無權限 No Permission", description="抱歉。您沒有足夠權限執行此操作。\nSorry, but you don't have permission to do that.", color=0x36393f)
-    await ctx.send(embed=embed)
+    emojis = bot.get_guild(848231259440414750).emojis
     embed1=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="help")} `m!help`
 {get(emojis, name='space')} 此指令。
 {get(emojis, name='space')} This command.""", color=0x36393f)
@@ -223,7 +221,7 @@ async def help(ctx):
     embed3=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="usernamereg")} `m!usernamereg [java|bedrock] [username]`
 {get(emojis, name='space')} 註冊您的 Minecraft 使用者名稱。
 {get(emojis, name='space')} Register your Minecraft username.""", color=0x36393f)
-    embed4=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="usernamequery")} `m!username [java|bedrock] [mentionuser]`
+    embed4=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="username")} `m!username [java|bedrock] [mentionuser]`
 {get(emojis, name='space')} 查詢一個 Discord 用戶的 Minecraft 使用者名稱。 
 {get(emojis, name='space')} Query a Minecraft username of a Discord user.""", color=0x36393f)
     embed5=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="data")} m!data {{車站代號 Station Code}} {{eng|chi}}
@@ -258,7 +256,7 @@ guildID = 832673545090891808
              description="獲得機器人的延遲 Returns the latency in ms",
              guild_ids=[guildID])
 async def _ping(ctx):
-    emojis = bot.get_guild(832673546139729979).emojis
+    emojis = bot.get_guild(848231259440414750).emojis
     embed = discord.Embed(title=f"{get(emojis, name='ping')} 延遲 Ping", description=f"**{round(bot.latency * 1000)}ms**", color=0x36393f)
     await ctx.send(embed=embed)
     
@@ -266,21 +264,28 @@ async def _ping(ctx):
              description="獲得機器人的使用指南 Returns the user guide of this bot",
              guild_ids=[guildID])
 async def help(ctx):
-    await ctx.send("""***MR Bot 使用指南 User Guide***
-`/ping`
-獲得機器人的延遲。 Returns the latency in ms.
-
-`/help`
-此指令。 This command.
-
-`/usernamereg [Minecraft 使用者名稱 Username]`
-註冊您的 Minecraft 使用者名稱。 Register your Minecraft username.
-
-`/username [Discord 使用者 User]`
-查詢一個 Discord 用戶的 Minecraft 使用者名稱。 Query a Minecraft username of a Discord user.
-
-[] 必填 Required
-{} 選填 Optional""")
+    emojis = bot.get_guild(848231259440414750).emojis
+    embed1=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="help")} `/help`
+{get(emojis, name='space')} 此指令。
+{get(emojis, name='space')} This command.""", color=0x36393f)
+    embed2=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="ping")} `/ping`
+{get(emojis, name='space')} 獲得機器人的延遲。 
+{get(emojis, name='space')} Returns the latency in ms.""", color=0x36393f)
+    embed3=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="usernamereg")} `/usernamereg [java|bedrock] [username]`
+{get(emojis, name='space')} 註冊您的 Minecraft 使用者名稱。
+{get(emojis, name='space')} Register your Minecraft username.""", color=0x36393f)
+    embed4=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="username")} `/username [java|bedrock] [mentionuser]`
+{get(emojis, name='space')} 查詢一個 Discord 用戶的 Minecraft 使用者名稱。 
+{get(emojis, name='space')} Query a Minecraft username of a Discord user.""", color=0x36393f)
+    embed1.set_footer(text="[] 必填 Required {} 選填 Optional")
+    embed2.set_footer(text="[] 必填 Required {} 選填 Optional")
+    embed3.set_footer(text="[] 必填 Required {} 選填 Optional")
+    embed4.set_footer(text="[] 必填 Required {} 選填 Optional")
+    embeds = [embed1, embed2, embed3, embed4]
+    paginator = BotEmbedPaginator(ctx, embeds)
+    embed = discord.Embed(title=f"{get(emojis, name='error')} 留意下面訊息 Refer below", description="使用指南在下面訊息內。\nRefer to the message below for the help menu.", color=0x36393f)
+    await ctx.send(embed=embed)
+    await paginator.run()
 
 def runBot():    
     for i in os.listdir('./cogs'):

@@ -1,10 +1,12 @@
 import discord
 from discord.ext import commands
+from discord.utils import get
 import boto3
 import json
 from decouple import config
 from discord_slash import cog_ext, SlashContext
-from discord_slash.utils.manage_commands import create_option, create_choice
+from discord_slash.utils.manage_commands import create_option
+
 
 ## AWS setup
 key = config("AWSKEY") # AWS Access Key ID
@@ -28,17 +30,25 @@ class Minecraft(commands.Cog):
                 json.dump(usernames, f, indent=4)
             with open("usernames.json", "rb") as f:
                 client.upload_fileobj(f, "mr-bot", "usernames.json")
-            await ctx.send(f"<@{ctx.author.id}>，已註冊您的使用者名稱 **{username}**。\nRegistered your username as **{username}**, <@{ctx.author.id}>.")
+            emojis = self.bot.get_guild(848231259440414750).emojis
+            embed = discord.Embed(title=f"{get(emojis, name='success')} 註冊成功 Registration Successful", description=f"<@{ctx.author.id}>，已註冊您的使用者名稱 **{username}**。\nRegistered your username as **{username}**, <@{ctx.author.id}>.", color=0x36393f)
+            await ctx.send(embed=embed)
         else:
-            await ctx.send("請輸入一個使用者名稱！ Please input a username!")
+            emojis = self.bot.get_guild(848231259440414750).emojis
+            embed = discord.Embed(title=f"{get(emojis, name='error')} 參數錯誤 Argument Error", description="請輸入一個使用者名稱！\nPlease input a username!", color=0x36393f)
+            await ctx.send(embed=embed)
 
     @commands.command(name="username")
     async def un(self, ctx, *, user: discord.User):
         usernames = json.loads(client.get_object(Bucket="mr-bot", Key="usernames.json")["Body"].read())
         try:
-            await ctx.send(f"Discord 用戶 **{user.name}#{user.discriminator}** 的使用者名稱是\n**__{usernames[str(user.id)]}__**\n\nThe username of Discord user **{user.name}#{user.discriminator}** is:\n**__{usernames[str(user.id)]}__**")
+            emojis = self.bot.get_guild(848231259440414750).emojis
+            embed = discord.Embed(title=f"{get(emojis, name='username')} Minecraft 使用者名稱查詢 Minecraft Username Query", description=f"Discord 用戶 **{user.name}#{user.discriminator}** 的使用者名稱是\n**__{usernames[str(user.id)]}__**\n\nThe username of Discord user **{user.name}#{user.discriminator}** is:\n**__{usernames[str(user.id)]}__**", color=0x36393f)
+            await ctx.send(embed=embed)
         except KeyError:
-            await ctx.send("該用戶尚未註冊使用者名稱。 That user hasn't registered their username yet!")
+            emojis = self.bot.get_guild(848231259440414750).emojis
+            embed = discord.Embed(title=f"{get(emojis, name='error')} 用戶名稱未註冊 Username Not Registered", description="該用戶尚未註冊使用者名稱。\nThat user hasn't registered their username yet!", color=0x36393f)
+            await ctx.send(embed=embed)
             
     ### SLASH COMMANDS ZONE ###
     
@@ -68,9 +78,13 @@ class Minecraft(commands.Cog):
                 json.dump(usernames, f, indent=4)
             with open("usernames.json", "rb") as f:
                 client.upload_fileobj(f, "mr-bot", "usernames.json")
-            await ctx.send(f"<@{ctx.author.id}>，已註冊您的使用者名稱 **{username}**。\nRegistered your username as **{username}**, <@{ctx.author.id}>.")
+            emojis = self.bot.get_guild(848231259440414750).emojis
+            embed = discord.Embed(title=f"{get(emojis, name='success')} 註冊成功 Registration Successful", description=f"<@{ctx.author.id}>，已註冊您的使用者名稱 **{username}**。\nRegistered your username as **{username}**, <@{ctx.author.id}>.", color=0x36393f)
+            await ctx.send(embed=embed)
         else:
-            await ctx.send("請輸入一個使用者名稱！ Please input a username!")
+            emojis = self.bot.get_guild(848231259440414750).emojis
+            embed = discord.Embed(title=f"{get(emojis, name='error')} 參數錯誤 Argument Error", description="請輸入一個使用者名稱！\nPlease input a username!", color=0x36393f)
+            await ctx.send(embed=embed)
             
     @cog_ext.cog_slash(name="username",
                        description="查詢一個 Discord 用戶的 Minecraft 使用者名稱 Query a Minecraft username of a Discord user",
@@ -87,9 +101,13 @@ class Minecraft(commands.Cog):
         await ctx.defer()
         usernames = json.loads(client.get_object(Bucket="mr-bot", Key="usernames.json")["Body"].read())
         try:
-            await ctx.send(f"Discord 用戶 **{user.name}#{user.discriminator}** 的使用者名稱是\n**__{usernames[str(user.id)]}__**\n\nThe username of Discord user **{user.name}#{user.discriminator}** is:\n**__{usernames[str(user.id)]}__**")
+            emojis = self.bot.get_guild(848231259440414750).emojis
+            embed = discord.Embed(title=f"{get(emojis, name='username')} Minecraft 使用者名稱查詢 Minecraft Username Query", description=f"Discord 用戶 **{user.name}#{user.discriminator}** 的使用者名稱是\n**__{usernames[str(user.id)]}__**\n\nThe username of Discord user **{user.name}#{user.discriminator}** is:\n**__{usernames[str(user.id)]}__**", color=0x36393f)
+            await ctx.send(embed=embed)
         except KeyError:
-            await ctx.send("該用戶尚未註冊使用者名稱。 That user hasn't registered their username yet!")
+            emojis = self.bot.get_guild(848231259440414750).emojis
+            embed = discord.Embed(title=f"{get(emojis, name='error')} 用戶名稱未註冊 Username Not Registered", description="該用戶尚未註冊使用者名稱。\nThat user hasn't registered their username yet!", color=0x36393f)
+            await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(Minecraft(bot))

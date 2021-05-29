@@ -182,7 +182,7 @@
     <station code="DIP">
         <cname>恐龍港</cname>
         <ename>Dino Port</ename>
-        <line>CIL</line>
+        <line>CIL IIL</line>
         <exit>2</exit>
     </station>
     <station code="CAV">
