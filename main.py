@@ -32,8 +32,8 @@ async def on_ready():
         aliases += (list(command.aliases) + [command.name])
     
 @bot.event
-async def on_member_join(member, guild):
-    if guild.id != 832673545090891808:
+async def on_member_join(member):
+    if member.guild.id != 832673545090891808:
         return
     emojis = bot.get_guild(848231259440414750).emojis
     embed = discord.Embed(title=f"{get(emojis, name='join')} Member Joined", description=f"歡迎 <@{member.id}> 來到伺服器！\nWelcome <@{member.id}> to the server!", color=0x36393f)
@@ -41,8 +41,8 @@ async def on_member_join(member, guild):
     await channel.send(embed=embed)
     
 @bot.event
-async def on_member_remove(member, guild):
-    if guild.id != 832673545090891808:
+async def on_member_remove(guild):
+    if member.guild.id != 832673545090891808:
         return
     emojis = bot.get_guild(848231259440414750).emojis
     embed = discord.Embed(title=f"{get(emojis, name='leave')} Member Left", description=f"<@{member.id}> 離開了伺服器！下次再見\n<@{member.id}> has left the server! See you next time!", color=0x36393f)
