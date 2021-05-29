@@ -41,7 +41,7 @@ async def on_member_join(member):
     await channel.send(embed=embed)
     
 @bot.event
-async def on_member_remove(guild):
+async def on_member_remove(member):
     if member.guild.id != 832673545090891808:
         return
     emojis = bot.get_guild(848231259440414750).emojis
