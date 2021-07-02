@@ -33,7 +33,8 @@ class Data(commands.Cog):
             return
         lines = station.find("line").string.split(" ")
         exits = int(station.find("exit").string)
-        coords = tuple(int(station.find("x").string), int(station.find("z").string))
+        xcoord = int(station.find("x").string)
+        zcoord = int(station.find("z").string)
         if lang == "eng":
             name = station.find("ename").string
             stationType = "Checkpoint" if len(lines) >= 3 else "Station"
@@ -52,14 +53,14 @@ class Data(commands.Cog):
                 linee += lineNames[line] + ", "
             embed.add_field(name=f"{get(emojis, name='lines')}  Passing Lines", value=linee[:-2], inline=True)
             embed.add_field(name=f"{get(emojis, name='exit')}  No. of exits", value=exits, inline=True)
-            embed.add_field(name=f"{get(emojis, name='coords')} X, Z Coordinates", value=str(coords), inline=True)
+            embed.add_field(name=f"{get(emojis, name='coords')} X, Z Coordinates", value=f"({xcoord}, {zcoord})", inline=True)
         elif lang == "chi":
             embed=discord.Embed(title=f"{get(emojis, name='data')} {name}{stationType}", color=0x36393f)
             for line in lines:
                 linee += lineNames[line] + "、"
             embed.add_field(name=f"{get(emojis, name='lines')}  途經路綫", value=linee[:-1], inline=True)
             embed.add_field(name=f"{get(emojis, name='exit')}  出口數量", value=exits, inline=True)
-            embed.add_field(name=f"{get(emojis, name='coords')} X, Z 座標", value=str(coords), inline=True)
+            embed.add_field(name=f"{get(emojis, name='coords')} X, Z 座標", value=f"({xcoord}, {zcoord})", inline=True)
         await ctx.send(embed=embed)
 
 def setup(bot):
