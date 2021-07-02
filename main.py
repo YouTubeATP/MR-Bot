@@ -229,7 +229,7 @@ async def help(ctx):
 {get(emojis, name='space')} Obtain data of an MR station.""", color=0x36393f)
     embed6=discord.Embed(title=f"{get(emojis, name='help')} MR Bot 使用指南 User Guide", description=f"""{get(emojis, name="distance")} m!distance {{車站代號 1 Station Code 1}} {{車站代號 2 Station Code 2}} {{eng|chi}}
 {get(emojis, name='space')} 取得兩個 MR 車站之間的[歐幾里得距離](https://zh.wikipedia.org/zh-hk/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E8%B7%9D%E7%A6%BB)。 
-{get(emojis, name='space')} Get the [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance#Two_dimensions) between two givens stations.""", color=0x36393f)
+{get(emojis, name='space')} Get the [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance#Two_dimensions) between two given stations.""", color=0x36393f)
     embed1.set_footer(text="[] 必填 Required {} 選填 Optional")
     embed2.set_footer(text="[] 必填 Required {} 選填 Optional")
     embed3.set_footer(text="[] 必填 Required {} 選填 Optional")
