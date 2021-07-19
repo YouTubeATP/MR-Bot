@@ -263,4 +263,36 @@
 		<x>334</x>
 		<z>149</z>
     </station>
+	<station code="HSO">
+        <cname>謙美澤海山</cname>
+        <ename>Himmy S.O.M.</ename>
+        <line>EBL</line>
+        <exit>1</exit>
+		<x>1560</x>
+		<z>-773</z>
+    </station>
+	<station code="SEN">
+        <cname>聖加洲</cname>
+        <ename>Sengas Island</ename>
+        <line>IIL</line>
+        <exit>2</exit>
+		<x>1737</x>
+		<z>-2450</z>
+    </station>
+	<station code="SEN">
+        <cname>聖加洲</cname>
+        <ename>Sengas Island</ename>
+        <line>IIL</line>
+        <exit>2</exit>
+		<x>1737</x>
+		<z>-2450</z>
+    </station>
+	<station code="SEN">
+        <cname>聖都灣</cname>
+        <ename>Santos Bay</ename>
+        <line>IIL</line>
+        <exit>2</exit>
+		<x>2172</x>
+		<z>-2808</z>
+    </station>
 </stations>
