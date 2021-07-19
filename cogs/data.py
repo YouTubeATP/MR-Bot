@@ -42,7 +42,7 @@ class Data(commands.Cog):
         elif lang == "chi":    
             name = station.find("cname").string
             stationType = "檢查站" if len(lines) >= 3 else "站"
-            lineNames = {"MSL": "里程綫", "NEL": "新代綫", "EWL": "東西綫", "CAL": "洞穴綫", "CIL": "城市綫", "EBL": "站站講支綫", "IIL": "群島綫"}
+            lineNames = {"MSL": "里程綫", "NEL": "新代綫", "EWL": "東西綫", "CAL": "洞穴綫", "CIL": "城市綫", "EBL": "站站講支綫", "IIL": "跨島綫"}
         else:
             await ctx.send("參數無效！ Invalid argument!")
             return
