@@ -279,15 +279,7 @@
 		<x>1737</x>
 		<z>-2450</z>
     </station>
-	<station code="SEN">
-        <cname>聖加洲</cname>
-        <ename>Sengas Island</ename>
-        <line>IIL</line>
-        <exit>2</exit>
-		<x>1737</x>
-		<z>-2450</z>
-    </station>
-	<station code="SEN">
+	<station code="SAN">
         <cname>聖都灣</cname>
         <ename>Santos Bay</ename>
         <line>IIL</line>
